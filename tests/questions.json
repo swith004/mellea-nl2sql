@@ -1,0 +1,258 @@
+[
+  {
+    "id": "q001",
+    "category": "lookup-simple",
+    "question": "How many movies are in the database?",
+    "gold_sql": "",
+    "expected_rows": [],
+    "notes": "Count star on movies."
+  },
+  {
+    "id": "q002",
+    "category": "lookup-simple",
+    "question": "How many ratings has user 42 submitted?",
+    "gold_sql": "",
+    "expected_rows": [],
+    "notes": "Single-table count with where."
+  },
+  {
+    "id": "q003",
+    "category": "lookup-simple",
+    "question": "What is the title of the movie with movieId 318?",
+    "gold_sql": "",
+    "expected_rows": [],
+    "notes": "Direct id lookup. Baseline must ace this."
+  },
+  {
+    "id": "q004",
+    "category": "lookup-simple",
+    "question": "List all distinct genre strings that appear in the movies table.",
+    "gold_sql": "",
+    "expected_rows": [],
+    "notes": "SELECT DISTINCT genres."
+  },
+  {
+    "id": "q005",
+    "category": "lookup-simple",
+    "question": "How many users have rated at least one movie?",
+    "gold_sql": "",
+    "expected_rows": [],
+    "notes": "COUNT DISTINCT userId."
+  },
+  {
+    "id": "q006",
+    "category": "lookup-simple",
+    "question": "What is the highest rating value that appears in the ratings table?",
+    "gold_sql": "",
+    "expected_rows": [],
+    "notes": "MAX. Should be 5.0."
+  },
+  {
+    "id": "q007",
+    "category": "lookup-simple",
+    "question": "How many movies have the exact genre string 'Comedy'?",
+    "gold_sql": "",
+    "expected_rows": [],
+    "notes": "Exact match, not LIKE. Trap for baseline."
+  },
+  {
+    "id": "q008",
+    "category": "lookup-simple",
+    "question": "How many ratings are exactly 5.0?",
+    "gold_sql": "",
+    "expected_rows": [],
+    "notes": "Count with equality on a float."
+  },
+  {
+    "id": "q009",
+    "category": "lookup-simple",
+    "question": "What is the tmdbId of the movie with movieId 1?",
+    "gold_sql": "",
+    "expected_rows": [],
+    "notes": "Links table lookup."
+  },
+  {
+    "id": "q010",
+    "category": "lookup-simple",
+    "question": "How many distinct tags appear in the tags table?",
+    "gold_sql": "",
+    "expected_rows": [],
+    "notes": "COUNT DISTINCT tag."
+  },
+  {
+    "id": "q011",
+    "category": "join-aggregate",
+    "question": "What is the average rating of 'Toy Story (1995)'?",
+    "gold_sql": "",
+    "expected_rows": [],
+    "notes": "Join movies + ratings on title."
+  },
+  {
+    "id": "q012",
+    "category": "join-aggregate",
+    "question": "List the top 10 movies by number of ratings, from most to least.",
+    "gold_sql": "",
+    "expected_rows": [],
+    "notes": "Group by + order by count desc + limit."
+  },
+  {
+    "id": "q013",
+    "category": "join-aggregate",
+    "question": "What is the average rating for each genre string?",
+    "gold_sql": "",
+    "expected_rows": [],
+    "notes": "Tests genre-string vs split disambiguation."
+  },
+  {
+    "id": "q014",
+    "category": "join-aggregate",
+    "question": "How many movies have at least 100 ratings?",
+    "gold_sql": "",
+    "expected_rows": [],
+    "notes": "Group by movieId with HAVING clause."
+  },
+  {
+    "id": "q015",
+    "category": "join-aggregate",
+    "question": "Find the 5 movies with the highest average rating among movies that have at least 1000 ratings.",
+    "gold_sql": "",
+    "expected_rows": [],
+    "notes": "HAVING + subquery; baseline often forgets filter."
+  },
+  {
+    "id": "q016",
+    "category": "join-aggregate",
+    "question": "How many movies were released in 1995, according to the year in parentheses in the title?",
+    "gold_sql": "",
+    "expected_rows": [],
+    "notes": "Year must be parsed from title string."
+  },
+  {
+    "id": "q017",
+    "category": "join-aggregate",
+    "question": "What are the 3 most common tags applied to the movie 'The Matrix (1999)'?",
+    "gold_sql": "",
+    "expected_rows": [],
+    "notes": "Tags + movies join + group by tag."
+  },
+  {
+    "id": "q018",
+    "category": "join-aggregate",
+    "question": "How many distinct movies has user 123 tagged?",
+    "gold_sql": "",
+    "expected_rows": [],
+    "notes": "COUNT DISTINCT movieId in tags where userId."
+  },
+  {
+    "id": "q019",
+    "category": "genre-string",
+    "question": "How many movies include 'Horror' as one of their genres?",
+    "gold_sql": "",
+    "expected_rows": [],
+    "notes": "Must handle pipe-separated multi-value column."
+  },
+  {
+    "id": "q020",
+    "category": "genre-string",
+    "question": "What is the highest-rated movie whose genres include both 'Action' and 'Comedy', with at least 500 ratings?",
+    "gold_sql": "",
+    "expected_rows": [],
+    "notes": "Two LIKE clauses + having."
+  },
+  {
+    "id": "q021",
+    "category": "genre-string",
+    "question": "Count movies tagged as having no genres listed.",
+    "gold_sql": "",
+    "expected_rows": [],
+    "notes": "Literal string '(no genres listed)', not NULL."
+  },
+  {
+    "id": "q022",
+    "category": "date-timestamp",
+    "question": "How many ratings were submitted in 2015?",
+    "gold_sql": "",
+    "expected_rows": [],
+    "notes": "Needs 'unixepoch' modifier on strftime."
+  },
+  {
+    "id": "q023",
+    "category": "date-timestamp",
+    "question": "What was the earliest rating in the dataset, and what movie was it for?",
+    "gold_sql": "",
+    "expected_rows": [],
+    "notes": "MIN timestamp + join."
+  },
+  {
+    "id": "q024",
+    "category": "date-timestamp",
+    "question": "How many ratings per year were submitted, from 2000 through 2010?",
+    "gold_sql": "",
+    "expected_rows": [],
+    "notes": "Group by year, BETWEEN clause."
+  },
+  {
+    "id": "q025",
+    "category": "tricky-ties-nulls",
+    "question": "Which movie or movies have the highest average rating among all movies with exactly 1 rating?",
+    "gold_sql": "",
+    "expected_rows": [],
+    "notes": "Ties expected; return all tied rows."
+  },
+  {
+    "id": "q026",
+    "category": "tricky-ties-nulls",
+    "question": "List all movies that have no tags in the tags table.",
+    "gold_sql": "",
+    "expected_rows": [],
+    "notes": "LEFT JOIN with IS NULL check."
+  },
+  {
+    "id": "q027",
+    "category": "tricky-ties-nulls",
+    "question": "Find the user who gave the most 5.0 ratings. If there's a tie, return all tied users.",
+    "gold_sql": "",
+    "expected_rows": [],
+    "notes": "Explicit tie handling."
+  },
+  {
+    "id": "q028",
+    "category": "tricky-ties-nulls",
+    "question": "For each movie that has at least 50 ratings, what percentage of its ratings are 5.0? List the top 5.",
+    "gold_sql": "",
+    "expected_rows": [],
+    "notes": "Conditional aggregate; avoid integer division."
+  },
+  {
+    "id": "q029",
+    "category": "tricky-ties-nulls",
+    "question": "Which users have rated every movie in the Toy Story series (Toy Story, Toy Story 2, Toy Story 3, Toy Story 4)?",
+    "gold_sql": "",
+    "expected_rows": [],
+    "notes": "Set-containment via HAVING COUNT DISTINCT."
+  },
+  {
+    "id": "q030",
+    "category": "unanswerable-schema",
+    "question": "What is the age of user 42?",
+    "gold_sql": "",
+    "expected_rows": [],
+    "notes": "No users demographics table in ML-25M."
+  },
+  {
+    "id": "q031",
+    "category": "unanswerable-schema",
+    "question": "Which director has the most movies in the database?",
+    "gold_sql": "",
+    "expected_rows": [],
+    "notes": "No director data in MovieLens."
+  },
+  {
+    "id": "q032",
+    "category": "unanswerable-schema",
+    "question": "What is the box office revenue of the highest-grossing Comedy?",
+    "gold_sql": "",
+    "expected_rows": [],
+    "notes": "No revenue column."
+  }
+]
